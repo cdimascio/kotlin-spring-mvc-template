@@ -5,6 +5,7 @@ import api.logger
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -18,11 +19,11 @@ import javax.validation.constraints.NotNull
 @RequestMapping("/users")
 class UsersController(private val usersService: UsersService) {
 
-    @GetMapping("/")
+    @GetMapping
     fun all(
     ) = usersService.all()
 
-    @PostMapping("/")
+    @PostMapping
     fun create(
         @NotNull @RequestBody user: UserPostBody
     ): User {
@@ -32,12 +33,12 @@ class UsersController(private val usersService: UsersService) {
 
     @GetMapping("/{id}")
     fun byId(
-        @NotNull @RequestParam(value = "id") id: Long
+        @NotNull @PathVariable(value = "id") id: Long
     ) = usersService.byId(id) ?: throw notFound()
 
     @PutMapping("/{id}")
     fun update(
-        @NotNull @RequestParam(value = "id") id: Long,
+        @NotNull @PathVariable(value = "id") id: Long,
         @NotNull @RequestBody changes: UserPutBody
     ): User {
         logger.info("Update user $id with $changes")
@@ -48,7 +49,7 @@ class UsersController(private val usersService: UsersService) {
 
     @DeleteMapping("/{id}")
     fun delete(
-        @NotNull @RequestParam(value = "id") id: Long
+        @NotNull @PathVariable(value = "id") id: Long
     ): User {
         logger.info("Delete user $id")
         return usersService.delete(id) ?: throw notFound()
