@@ -1,5 +1,8 @@
 package api.common.errors
 
+import io.github.cdimascio.jwcperrors.ApiError
+import io.github.cdimascio.jwcperrors.ApiError.badRequest
+import io.github.cdimascio.jwcperrors.ApiError.internalServerError
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
@@ -23,7 +26,7 @@ class ErrorHandlers {
     @ExceptionHandler(ApiError::class)
     fun apiError(res: HttpServletResponse, ex: ApiError): ApiError {
         ex.printStackTrace()
-        res.status = ex.status.value()
+        res.status = ex.status.code
         return ex
     }
 }

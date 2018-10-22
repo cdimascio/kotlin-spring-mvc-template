@@ -2,7 +2,9 @@ package api
 
 import api.users.User
 import com.mashape.unirest.http.Unirest
+import io.github.cdimascio.jwcperrors.ApiError
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -17,7 +19,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 class IntegrationTests : TestBase() {
 
     @BeforeAll
-    fun before() {}
+    fun before() {
+    }
 
     @Test
     fun fetchUser() {
@@ -33,5 +36,12 @@ class IntegrationTests : TestBase() {
         r.body.forEach {
             assertTrue(!it.name.isEmpty())
         }
+    }
+
+    @Test
+    fun fetchUserNotFound() {
+        val r = Unirest.get("${apiRoot()}/users/10").asObject(ApiError::class.java)
+        assertNotNull(r.body)
+        assertEquals(r.status, 404)
     }
 }
