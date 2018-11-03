@@ -51,7 +51,7 @@ java -jar ./build/libs/example-service-1.0.0.jar
 
 ## Try It
 
-Navigate to [http://localhost:8080/swagger-ui.html](http://localhost:8080/api_explorer/index.html)
+Navigate to [http://localhost:8080/api_explorer/index.html](http://localhost:8080/api_explorer/index.html)
 
 ## License
 Apache 2.0
