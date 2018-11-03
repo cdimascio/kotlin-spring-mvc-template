@@ -1,0 +1,199 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Users example API
+  license:
+    name: MIT
+servers:
+- url: /
+paths:
+  /users:
+    get:
+      summary: Get users
+      tags:
+      - users
+      responses:
+        '200':
+          description: The list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      summary: Create an user
+      operationId: createUsers
+      tags:
+      - users
+      requestBody:
+        description: File and metdata
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '201':
+          description: The new user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /users/{user_id}:
+    get:
+      summary: Get the user
+      operationId: getUser
+      tags:
+      - users
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The user id
+        schema:
+          type: string
+        example: 0
+      responses:
+        '200':
+          description: The user with the specified id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Update a user
+      operationId: updateUser
+      tags:
+      - users
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The user id
+        schema:
+          type: string
+        example: 0
+      requestBody:
+        description: File and metdata
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: The user with the specified id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Delete a user
+      operationId: deleteUser
+      tags:
+      - users
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The user id
+        schema:
+          type: string
+        example: 0
+      responses:
+        '200':
+          description: The user with the specified id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+components:
+  schemas:
+    UserCreate:
+      required:
+      - name
+      properties:
+        name:
+          type: string
+      example: { name: "carmine" }
+    User:
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      example: { id: 0, name: "carmine" }
+    Error:
+      required:
+      - trace
+      - errors
+      properties:
+        trace:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: object
+              message:
+                type: string
+

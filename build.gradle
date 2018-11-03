@@ -1,20 +1,20 @@
 buildscript {
-	ext {
-		kotlinVersion = '1.2.51'
-		springBootVersion = '2.0.5.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-		maven {
-			url "https://plugins.gradle.org/m2/"
-		}
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-		classpath 'org.jmailen.gradle:kotlinter-gradle:1.19.0'
-	}
+  ext {
+    kotlinVersion = '1.2.51'
+    springBootVersion = '2.0.5.RELEASE'
+  }
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+    classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+    classpath 'org.jmailen.gradle:kotlinter-gradle:1.19.0'
+  }
 }
 
 
@@ -29,48 +29,49 @@ group = 'api'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 compileKotlin {
-	kotlinOptions {
-		freeCompilerArgs = ["-Xjsr305=strict"]
-		jvmTarget = "1.8"
-	}
+  kotlinOptions {
+    freeCompilerArgs = ["-Xjsr305=strict"]
+    jvmTarget = "1.8"
+  }
 }
 compileTestKotlin {
-	kotlinOptions {
-		freeCompilerArgs = ["-Xjsr305=strict"]
-		jvmTarget = "1.8"
-	}
+  kotlinOptions {
+    freeCompilerArgs = ["-Xjsr305=strict"]
+    jvmTarget = "1.8"
+  }
 }
 
 repositories {
-	mavenCentral()
+  mavenCentral()
 }
 
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-web')
-	implementation('com.fasterxml.jackson.module:jackson-module-kotlin')
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-    compile files ('lib/jwcp-errors-0.3.0.jar')
-	compile 'io.github.cdimascio:java-dotenv:3.1.2'
+  implementation('org.springframework.boot:spring-boot-starter-web')
+  implementation('com.fasterxml.jackson.module:jackson-module-kotlin')
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+  implementation("org.jetbrains.kotlin:kotlin-reflect")
+  compile files('lib/jwcp-errors-0.3.0.jar')
+  compile 'io.github.cdimascio:java-dotenv:3.1.2'
 
-	compile("io.springfox:springfox-swagger2:2.9.2")
-	compile("io.springfox:springfox-swagger-ui:2.9.2")
+  compile 'com.atlassian.oai:swagger-request-validator-springmvc:2.0.2'
+  compile("io.springfox:springfox-swagger2:2.9.2")
+  compile("io.springfox:springfox-swagger-ui:2.9.2")
   compile "io.springfox:springfox-bean-validators:2.9.2"
 
   compile 'com.mashape.unirest:unirest-java:1.4.9'
 
   compile("ch.qos.logback:logback-classic:1.2.3")
 
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+  testImplementation('org.springframework.boot:spring-boot-starter-test')
   testCompile("org.junit.jupiter:junit-jupiter-api:5.3.1")
   testCompile("org.junit.jupiter:junit-jupiter-params:5.3.1")
   testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
 }
 
 kotlinter {
-	ignoreFailures = false
-	indentSize = 4
-	continuationIndentSize = 4
-	reporters = ['checkstyle', 'plain']
+  ignoreFailures = false
+  indentSize = 4
+  continuationIndentSize = 4
+  reporters = ['checkstyle', 'plain']
 }
