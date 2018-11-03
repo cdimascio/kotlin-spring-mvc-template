@@ -1,13 +1,14 @@
 # kotlin-spring-mvc-template
 
-Spring MVC template using Kotlin. 
+Spring 5 MVC template using Kotlin, OpenAPI 3.0.0
 
 Features 
 
-- automatic documentation generation via Swagger
-- automatic request validation via JSR-303 Bean Validation.
+- automatic documentation generation via Swagger UI
+- automatic request and response validation via atlassian OpenApi 3.0.0.
 - 12 factor compliant configuration via dotenv
 - automatic code formatting and linting via ktlint
+- api integration tests using Unirest
 
 ## Setup
 
@@ -34,15 +35,23 @@ Features
 ```
 
 ## Test
-No tests yet!!
 
 ```shell
 ./gradlew test
 ```
 
+## Package / Dist
+
+```shell
+./gradlew jar
+
+# Run it
+java -jar ./build/libs/example-service-1.0.0.jar  
+```
+
 ## Try It
 
-Navigate to [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+Navigate to [http://localhost:8080/swagger-ui.html](http://localhost:8080/api_explorer/index.html)
 
 ## License
 Apache 2.0
