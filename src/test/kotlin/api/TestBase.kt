@@ -35,5 +35,4 @@ class TestBase {
     lateinit var environment: Environment
 
     fun apiRoot() = "http://localhost:${environment.getProperty("local.server.port")!!}"
-
 }
