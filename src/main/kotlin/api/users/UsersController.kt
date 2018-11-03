@@ -2,6 +2,7 @@ package api.users
 
 import api.logger
 import io.github.cdimascio.jwcperrors.ApiError.notFound
+import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.constraints.NotNull
 
@@ -19,10 +21,10 @@ import javax.validation.constraints.NotNull
 class UsersController(private val usersService: UsersService) {
 
     @GetMapping
-    fun all(
-    ) = usersService.all()
+    fun all() = usersService.all()
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     fun create(
         @NotNull @RequestBody user: UserPostBody
     ): User {
