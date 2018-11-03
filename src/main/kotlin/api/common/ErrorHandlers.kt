@@ -72,7 +72,6 @@ class ErrorHandlers {
         res.status = ex.status.code
         return ex
     }
-
 }
 
 @RestControllerAdvice
