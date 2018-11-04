@@ -4,9 +4,8 @@ import api.users.User
 import api.users.UserPostBody
 import api.users.UserPutBody
 import com.mashape.unirest.http.Unirest
-import io.github.cdimascio.jwcperrors.ApiError
+import io.github.cdimascio.japierrors.basic.ApiErrorBasic
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -88,9 +87,8 @@ class IntegrationTests : TestBase() {
     fun fetchUserNotFound() {
         val r = Unirest
             .get("${apiRoot()}/users/10")
-            .asObject(ApiError::class.java)
+            .asObject(ApiErrorBasic::class.java)
 
-        assertNotNull("not_found", r.body.errors[0].code)
         assertEquals(404, r.status)
     }
 }

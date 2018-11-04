@@ -1,7 +1,7 @@
 package api.users
 
 import api.logger
-import io.github.cdimascio.jwcperrors.ApiError.notFound
+import io.github.cdimascio.japierrors.ApiError.notFound
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping

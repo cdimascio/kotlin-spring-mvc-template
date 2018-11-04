@@ -4,9 +4,11 @@ import api.logger
 import com.atlassian.oai.validator.springmvc.InvalidRequestException
 import com.atlassian.oai.validator.springmvc.InvalidResponseException
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import io.github.cdimascio.jwcperrors.ApiError
-import io.github.cdimascio.jwcperrors.ApiError.badRequest
-import io.github.cdimascio.jwcperrors.ApiError.internalServerError
+import io.github.cdimascio.japierrors.ApiError
+import io.github.cdimascio.japierrors.ApiError.badRequest
+import io.github.cdimascio.japierrors.ApiError.internalServerError
+import io.github.cdimascio.japierrors.basic.ApiErrorBasic
+import io.github.cdimascio.japierrors.wcp.ApiErrorWcp
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
@@ -69,7 +71,14 @@ class ErrorHandlers {
     @ExceptionHandler(ApiError::class)
     fun apiError(res: HttpServletResponse, ex: ApiError): ApiError {
         ex.printStackTrace()
-        res.status = ex.status.code
+        res.status = when (ex) {
+            is ApiErrorWcp -> ex.status.code
+            is ApiErrorBasic -> ex.code
+            else -> {
+                ex.addSuppressed(Exception("unknown ApiError type"))
+                500
+            }
+        }
         return ex
     }
 }
