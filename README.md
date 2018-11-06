@@ -2,7 +2,7 @@
 
 Spring 5 MVC template with Kotlin and OpenAPI 3.0. (Also Supports Swagger 2.0)
 
-<p align="center">
+<p align="left">
 <img src="https://raw.githubusercontent.com/cdimascio/kotlin-spring-mvc-template/master/assets/spring-mvc-openapi.png" width="600"/>
 </p>
 
