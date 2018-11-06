@@ -2,6 +2,7 @@
 
 Spring 5 MVC template using Kotlin, OpenAPI 3.0.0
 
+![](https://raw.githubusercontent.com/cdimascio/kotlin-spring-mvc-template/master/assets/spring-mvc-openapi.png)
 Features 
 
 - automatic documentation generation via Swagger UI
