@@ -2,18 +2,20 @@
 
 Spring 5 MVC template with Kotlin and OpenAPI 3.0. (Also Supports Swagger 2.0)
 
+Features automatic request/response validation and interactive API doc
+
 <p align="left">
 <img src="https://raw.githubusercontent.com/cdimascio/kotlin-spring-mvc-template/master/assets/spring-mvc-openapi.png" width="600"/>
 </p>
 
 **Features**:
 
-- Automatic request and response validation via atlassian OpenApi 3.0
-- Automatic documentation generation via Swagger UI
-- 12 factor compliant configuration via dotenv
-- Automatic code formatting and linting via ktlint
+- Automatic request and response validation via atlassian [OpenApi 3.0](https://swagger.io/docs/specification/about/)
+- Automatic documentation generation via [Swagger UI](https://swagger.io/tools/swagger-ui/)
+- 12 factor compliant configuration via [java-dotenv](https://github.com/cdimascio/java-dotenv)
+- Automatic code formatting and linting via [ktlint](https://ktlint.github.io)
 - Fully operational sample REST API
-- API integration tests using Unirest
+- API integration tests with [Unirest](http://unirest.io/java.html) REST client
 
 ## Setup
 
