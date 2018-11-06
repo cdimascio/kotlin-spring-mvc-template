@@ -34,7 +34,8 @@ Features automatic request/response validation and interactive API doc
 ## Format/Lint 
 
 ```shell
-./gradlew formatKotlin
+./gradlew lintKotlin # see lint errors
+./gradlew formatKotlin # attempt to automatically fix lint errors
 ```
 
 ## Run
@@ -53,7 +54,7 @@ Features automatic request/response validation and interactive API doc
 ```shell
 ./gradlew jar
 
-# Run it
+# Run the dist
 java -jar ./build/libs/example-service-1.0.0.jar  
 ```
 
