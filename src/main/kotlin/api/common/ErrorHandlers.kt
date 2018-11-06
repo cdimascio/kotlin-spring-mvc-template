@@ -24,19 +24,18 @@ import javax.servlet.http.HttpServletResponse
 import javax.validation.ConstraintViolationException
 
 @RestControllerAdvice
+@Order(Ordered.HIGHEST_PRECEDENCE)
 class ErrorHandlers {
     private val mapper = jacksonObjectMapper()
 
     @ExceptionHandler(ConstraintViolationException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @Order(Ordered.HIGHEST_PRECEDENCE)
     fun badRequest(res: HttpServletResponse, ex: Exception): ApiError {
         ex.printStackTrace()
         return badRequest(ex)
     }
 
     @ExceptionHandler(InvalidRequestException::class)
-    @Order(Ordered.HIGHEST_PRECEDENCE)
     fun invalidRequest(res: HttpServletResponse, ex: InvalidRequestException): ApiError {
         logger.warn(ex.toString())
         val json = mapper.readTree(ex.message)
@@ -60,7 +59,6 @@ class ErrorHandlers {
     }
 
     @ExceptionHandler(InvalidResponseException::class)
-    @Order(Ordered.HIGHEST_PRECEDENCE)
     fun invalidResponse(res: HttpServletResponse, ex: InvalidResponseException): ApiError {
         logger.error(ex.toString())
         val json = mapper.readTree(ex.message)
