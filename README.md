@@ -1,15 +1,19 @@
 # kotlin-spring-mvc-template
 
-Spring 5 MVC template using Kotlin, OpenAPI 3.0.0
+Spring 5 MVC template with Kotlin and OpenAPI 3.0. (Also Supports Swagger 2.0)
 
-![](https://raw.githubusercontent.com/cdimascio/kotlin-spring-mvc-template/master/assets/spring-mvc-openapi.png)
-Features 
+<p align="center">
+<img src="https://raw.githubusercontent.com/cdimascio/kotlin-spring-mvc-template/master/assets/spring-mvc-openapi.png" width="600"/>
+</p>
 
-- automatic documentation generation via Swagger UI
-- automatic request and response validation via atlassian OpenApi 3.0.0.
+**Features**:
+
+- Automatic request and response validation via atlassian OpenApi 3.0
+- Automatic documentation generation via Swagger UI
 - 12 factor compliant configuration via dotenv
-- automatic code formatting and linting via ktlint
-- api integration tests using Unirest
+- Automatic code formatting and linting via ktlint
+- Fully operational sample REST API
+- API integration tests using Unirest
 
 ## Setup
 
