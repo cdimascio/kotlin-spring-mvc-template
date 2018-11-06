@@ -16,6 +16,7 @@ Features automatic request/response validation and interactive API doc
 - Automatic code formatting and linting via [ktlint](https://ktlint.github.io)
 - Fully operational sample REST API
 - API integration tests with [Unirest](http://unirest.io/java.html) REST client
+- Simple HTTP errors via [japi-errors](https://github.com/cdimascio/japi-errors)
 - Dockerfile
 
 ## Setup
