@@ -63,5 +63,9 @@ java -jar ./build/libs/example-service-1.0.0.jar
 
 Navigate to [http://localhost:8080/api_explorer/index.html](http://localhost:8080/api_explorer/index.html)
 
+## Interactive Api doc
+
+![](https://raw.githubusercontent.com/cdimascio/kotlin-spring-mvc-template/master/assets/swagger-ui.png)
+
 ## License
 Apache 2.0
