@@ -63,6 +63,17 @@ java -jar ./build/libs/example-service-1.0.0.jar
 
 Navigate to [http://localhost:8080/api_explorer/index.html](http://localhost:8080/api_explorer/index.html)
 
+## Validate Example
+
+
+```shell
+curl -X POST "http://localhost:8080/users" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"me\":\"carmine\"}"
+
+{
+  "error": " Object instance has properties which are not allowed by the schema: [\"me\"]",
+  "code": 400
+}
+```
 ## Interactive Api doc
 
 ![](https://raw.githubusercontent.com/cdimascio/kotlin-spring-mvc-template/master/assets/swagger-ui.png)
