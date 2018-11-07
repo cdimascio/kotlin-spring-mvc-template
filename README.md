@@ -1,6 +1,6 @@
 # kotlin-spring-mvc-template
 
-Spring 5 MVC template with Kotlin and OpenAPI 3.0. (Also Supports Swagger 2.0)
+Spring 5 MVC template with *Kotlin* and *OpenAPI 3.0*. (Also Supports *Swagger 2.0*)
 
 Features automatic request/response validation and interactive API doc
 
