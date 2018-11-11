@@ -40,15 +40,19 @@ class ErrorHandlers {
         logger.warn(ex.toString())
         val json = mapper.readTree(ex.message)
         val key = json["messages"][0]["key"].asText()
-        val messageBody = json["messages"][0]["message"].asText()
-        val messagePrefix = json["messages"][0]["context"]["parameter"]?.let {
-            val name = it.get("name")?.asText() ?: ""
-            val inType = it.get("in")?.let {
-                "(in ${it.asText()})"
+
+        val message = json["messages"].map { m ->
+            val body = m["message"].asText()
+            val prefix = m["context"]["parameter"]?.let {
+                val name = it.get("name")?.asText() ?: ""
+                val inType = it.get("in")?.let {
+                    " (in ${it.asText()})"
+                } ?: ""
+                "$name$inType: "
             } ?: ""
-            "$name $inType:"
-        } ?: ""
-        val message = "$messagePrefix $messageBody"
+            "$prefix$body"
+        }.joinToString(" and ")
+
         return if (key == "validation.request.path.missing") {
             res.status = 404
             ApiError.notFound(message)
