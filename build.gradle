@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    kotlinVersion = '1.2.51'
+    kotlinVersion = '1.3.21'
     springBootVersion = '2.0.5.RELEASE'
   }
   repositories {
@@ -13,7 +13,7 @@ buildscript {
     classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
     classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-    classpath 'org.jmailen.gradle:kotlinter-gradle:1.19.0'
+    classpath 'org.jmailen.gradle:kotlinter-gradle:1.21.0'
   }
 }
 
@@ -45,6 +45,14 @@ repositories {
   mavenCentral()
   maven {
     url  "https://dl.bintray.com/cdimascio/maven/"
+  }
+}
+
+
+
+dependencyManagement {
+  imports {
+    mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
   }
 }
 
